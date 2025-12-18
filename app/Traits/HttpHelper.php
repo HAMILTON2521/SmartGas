@@ -134,7 +134,11 @@ trait HttpHelper
 
         Log::info(__FUNCTION__, ['url' => $endpoint, 'data' => $formatedRequestData]);
 
-        $response = Http::asForm()->post(url: $endpoint, data: $formatedRequestData);
+        $response = Http::asForm()
+            ->timeout(30)
+            ->connectTimeout(5)
+            ->retry(3,200)
+            ->post(url: $endpoint, data: $formatedRequestData);
         $response->throw();
 
         return $response->json();
