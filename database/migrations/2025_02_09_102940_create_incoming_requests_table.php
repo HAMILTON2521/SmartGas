@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('enquiry_txn_id')->nullable();
             $table->text('remarks')->nullable();
             $table->enum('status', ['Success', 'Failed', 'Not Found'])->default('Failed');
-            $table->string('error_message')->nullable()->default('Validation failed');
+            $table->string('error_message')->nullable();
             $table->foreignUlid('customer_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignUlid('created_by')->nullable()->constrained('users', 'id')->nullOnDelete();
             $table->json('error_details')->nullable();
