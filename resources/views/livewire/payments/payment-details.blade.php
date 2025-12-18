@@ -71,6 +71,7 @@
                             <th>Status</th>
                             <th>Order Id</th>
                             <td>Message</td>
+                            <td>Actions</td>
                             </thead>
                             <tbody>
 
@@ -91,6 +92,18 @@
                                     </td>
                                     <td>{{ $request->order_id ?? '-' }}</td>
                                     <td>{{ Str::substr($request->error_message, 0, 19) }}</td>
+                                    <td>
+                                        <ul class="list-unstyled mb-0 d-flex align-items-center">
+                                        @if ($payment->status==='Received' && $request->status==='New')
+                                            <li class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Resend to Lorawan">
+                                                <button type="button" wire:click="resendRechargeRequest('{{ $request->id }}')" class="btn text-dark px-2 fs-5 bg-hover-primary nav-icon-hover position-relative z-index-5">
+                                                    <i class="ti ti-arrow-right"></i>
+                                                    <x-spinner target="resendRechargeRequest('{{ $request->id }}')" />
+                                                </button>
+                                            </li>
+                                        @endif
+                                        </ul>
+                                    </td>
                                 </tr>
                                 <!-- end row -->
                             @empty
