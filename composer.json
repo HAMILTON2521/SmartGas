@@ -6,7 +6,7 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.2",
         "blade-ui-kit/blade-ui-kit": "^0.7.0",
         "devrabiul/laravel-toaster-magic": "^1.2",
         "firebase/php-jwt": "^6.11",
